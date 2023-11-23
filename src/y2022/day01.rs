@@ -1,5 +1,5 @@
-use crate::{Problem, Year};
 use crate::Year::Y2022;
+use crate::{Problem, Year};
 
 pub struct DayOne {}
 
@@ -30,13 +30,13 @@ impl Problem for DayOne {
     fn get_year(&self) -> Year {
         Y2022
     }
-    fn part_one(&self, input: &str) -> String {
+    fn solve_part_one(&self, input: &str) -> String {
         let totals = self.get_elves_totals(input);
         let max = totals.iter().max().unwrap();
         format!("{max}")
     }
 
-    fn part_two(&self, input: &str) -> String {
+    fn solve_part_two(&self, input: &str) -> String {
         let mut totals = self.get_elves_totals(input);
         totals.sort();
         totals.reverse();
@@ -66,10 +66,10 @@ mod tests {
 "#;
     #[test]
     fn part_one() {
-        assert_eq!(DayOne {}.part_one(INPUT), "24000");
+        assert_eq!(DayOne {}.solve_part_one(INPUT), "24000");
     }
     #[test]
     fn part_two() {
-        assert_eq!(DayOne {}.part_two(INPUT), "45000");
+        assert_eq!(DayOne {}.solve_part_two(INPUT), "45000");
     }
 }

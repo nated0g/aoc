@@ -11,6 +11,9 @@ fn get_problem(year: Year, day: i32) -> Result<Box<dyn Problem>> {
             2 => Ok(Box::new(DayTwo {})),
             _ => Err(Error::msg("not implemented")),
         },
+        Year::Y2023 => match day {
+            _ => Err(Error::msg("not implemented")),
+        },
     }
 }
 

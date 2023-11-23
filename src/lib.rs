@@ -4,11 +4,17 @@ use std::str::FromStr;
 pub mod y2022 {
     pub mod day01;
     pub mod day02;
+    pub mod day03;
+}
+
+pub mod y2023 {
+    pub mod day01;
 }
 
 #[derive(Clone, Copy, Debug)]
 pub enum Year {
     Y2022 = 2022,
+    Y2023 = 2023,
 }
 
 impl FromStr for Year {
@@ -17,6 +23,7 @@ impl FromStr for Year {
         let year_int: i32 = s.parse()?;
         match year_int {
             x if x == Year::Y2022 as i32 => Ok(Year::Y2022),
+            x if x == Year::Y2023 as i32 => Ok(Year::Y2023),
             _ => Err(Error::msg("Year not implemented.")),
         }
     }
@@ -25,8 +32,8 @@ impl FromStr for Year {
 pub trait Problem {
     fn get_day(&self) -> i32;
     fn get_year(&self) -> Year;
-    fn part_one(&self, input: &str) -> String;
-    fn part_two(&self, input: &str) -> String;
+    fn solve_part_one(&self, input: &str) -> String;
+    fn solve_part_two(&self, input: &str) -> String;
 
     fn read_input(&self) -> String {
         std::fs::read_to_string(format!(
@@ -38,13 +45,13 @@ pub trait Problem {
     }
     fn solve(&self) {
         let input = self.read_input();
-        let solution_1 = self.part_one(input.as_str());
+        let solution_1 = self.solve_part_one(input.as_str());
         println!(
             "Solution for {:?}, day {}, part 1: {solution_1}",
             self.get_year(),
             self.get_day()
         );
-        let solution_2 = self.part_two(input.as_str());
+        let solution_2 = self.solve_part_two(input.as_str());
         println!(
             "Solution for {:?}, day {}, part 2: {solution_2}",
             self.get_year(),

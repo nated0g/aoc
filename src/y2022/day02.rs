@@ -114,7 +114,7 @@ impl Problem for DayTwo {
     fn get_year(&self) -> Year {
         Y2022
     }
-    fn part_one(&self, input: &str) -> String {
+    fn solve_part_one(&self, input: &str) -> String {
         let total: i32 = input
             .lines()
             .map(|line| Match::from_str(line).unwrap().get_score())
@@ -122,7 +122,7 @@ impl Problem for DayTwo {
         format!("{total}")
     }
 
-    fn part_two(&self, input: &str) -> String {
+    fn solve_part_two(&self, input: &str) -> String {
         let total: i32 = input
             .lines()
             .map(|line| Match::from_instructions(line).get_score())
@@ -139,10 +139,10 @@ B X
 C Z"#;
     #[test]
     fn part_one() {
-        assert_eq!(DayTwo {}.part_one(INPUT), "15");
+        assert_eq!(DayTwo {}.solve_part_one(INPUT), "15");
     }
     #[test]
     fn part_two() {
-        assert_eq!(DayTwo {}.part_two(INPUT), "12");
+        assert_eq!(DayTwo {}.solve_part_two(INPUT), "12");
     }
 }
