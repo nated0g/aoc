@@ -1,15 +1,8 @@
 use anyhow::*;
 use std::str::FromStr;
 
-pub mod y2022 {
-    pub mod day01;
-    pub mod day02;
-    pub mod day03;
-}
-
-pub mod y2023 {
-    pub mod day01;
-}
+pub mod y2022;
+pub mod y2023;
 
 #[derive(Clone, Copy, Debug)]
 pub enum Year {
@@ -57,5 +50,26 @@ pub trait Problem {
             self.get_year(),
             self.get_day()
         );
+    }
+}
+
+pub fn get_problem(year: Year, day: i32) -> Result<Box<dyn Problem>> {
+    match year {
+        Year::Y2022 => {
+            use self::y2022::*;
+            match day {
+                1 => Ok(Box::new(DayOne {})),
+                2 => Ok(Box::new(DayTwo {})),
+                3 => Ok(Box::new(DayThree {})),
+                _ => Err(Error::msg("not implemented")),
+            }
+        }
+        Year::Y2023 => {
+            use self::y2023::*;
+            match day {
+                1 => Ok(Box::new(DayOne {})),
+                _ => Err(Error::msg("not implemented")),
+            }
+        }
     }
 }

@@ -13,11 +13,11 @@ impl Problem for DayOne {
         Y2023
     }
     fn solve_part_one(&self, input: &str) -> String {
-        todo!()
+        todo!("{input}")
     }
 
     fn solve_part_two(&self, input: &str) -> String {
-        todo!()
+        todo!("{input}")
     }
 }
 
@@ -27,12 +27,12 @@ mod tests {
     const INPUT: &str = r#"
     
 "#;
-    // #[test]
-    // fn part_one() {
-    //     assert_eq!(DayThree {}.solve_part_one(INPUT), "24000");
-    // }
-    // #[test]
-    // fn part_two() {
-    //     assert_eq!(DayThree {}.solve_part_two(INPUT), "45000");
-    // }
+    #[test]
+    fn part_one() {
+        assert_eq!(DayOne {}.solve_part_one(INPUT), "");
+    }
+    #[test]
+    fn part_two() {
+        assert_eq!(DayOne {}.solve_part_two(INPUT), "");
+    }
 }
