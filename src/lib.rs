@@ -63,6 +63,7 @@ pub fn get_problem(year: Year, day: i32) -> Result<Box<dyn Problem>> {
                 3 => Ok(Box::new(DayThree {})),
                 4 => Ok(Box::new(DayFour {})),
                 5 => Ok(Box::new(DayFive {})),
+                6 => Ok(Box::new(DaySix {})),
                 _ => Err(Error::msg("not implemented")),
             }
         }
