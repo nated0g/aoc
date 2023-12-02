@@ -64,6 +64,7 @@ pub fn get_problem(year: Year, day: i32) -> Result<Box<dyn Problem>> {
                 4 => Ok(Box::new(DayFour {})),
                 5 => Ok(Box::new(DayFive {})),
                 6 => Ok(Box::new(DaySix {})),
+                7 => Ok(Box::new(DaySeven {})),
                 _ => Err(Error::msg("not implemented")),
             }
         }
@@ -71,6 +72,7 @@ pub fn get_problem(year: Year, day: i32) -> Result<Box<dyn Problem>> {
             use self::y2023::*;
             match day {
                 1 => Ok(Box::new(DayOne {})),
+                2 => Ok(Box::new(DayTwo {})),
                 _ => Err(Error::msg("not implemented")),
             }
         }
