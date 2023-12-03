@@ -125,12 +125,7 @@ impl Problem for DayThree {
                 curr_part_num.push(*c);
             } else if !curr_part_num.is_empty() {
                 if s.any_point_has_symbol(&adjacent_points) {
-                    let num = curr_part_num
-                        .iter()
-                        .collect::<String>()
-                        .parse::<u32>()
-                        .unwrap();
-                    dbg!(num);
+                    let num = Schematic::part_str_to_num(curr_part_num.clone());
                     sum += num;
                 }
                 curr_part_num.clear();
