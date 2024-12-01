@@ -3,11 +3,13 @@ use std::str::FromStr;
 
 pub mod y2022;
 pub mod y2023;
+pub mod y2024;
 
 #[derive(Clone, Copy, Debug)]
 pub enum Year {
     Y2022 = 2022,
     Y2023 = 2023,
+    Y2024 = 2024,
 }
 
 impl FromStr for Year {
@@ -17,6 +19,7 @@ impl FromStr for Year {
         match year_int {
             x if x == Year::Y2022 as i32 => Ok(Year::Y2022),
             x if x == Year::Y2023 as i32 => Ok(Year::Y2023),
+            x if x == Year::Y2024 as i32 => Ok(Year::Y2024),
             _ => Err(Error::msg("Year not implemented.")),
         }
     }
@@ -75,6 +78,13 @@ pub fn get_problem(year: Year, day: i32) -> Result<Box<dyn Problem>> {
                 2 => Ok(Box::new(DayTwo {})),
                 3 => Ok(Box::new(DayThree {})),
                 4 => Ok(Box::new(DayFour {})),
+                _ => Err(Error::msg("not implemented")),
+            }
+        }
+        Year::Y2024 => {
+            use self::y2024::*;
+            match day {
+                1 => Ok(Box::new(DayOne {})),
                 _ => Err(Error::msg("not implemented")),
             }
         }
