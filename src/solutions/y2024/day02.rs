@@ -38,7 +38,7 @@ fn safe2(nums: &[i32]) -> u32 {
 }
 
 pub fn part1(input: &str) -> String {
-    let sum: u32 = input
+    input
         .lines()
         .into_iter()
         .map(|line| {
@@ -48,12 +48,12 @@ pub fn part1(input: &str) -> String {
                 .collect();
             safe1(&nums)
         })
-        .sum();
-    sum.to_string()
+        .sum::<u32>()
+        .to_string()
 }
 
 pub fn part2(input: &str) -> String {
-    let sum: u32 = input
+    input
         .lines()
         .into_iter()
         .map(|line| {
@@ -63,8 +63,8 @@ pub fn part2(input: &str) -> String {
                 .collect();
             safe2(&nums)
         })
-        .sum();
-    sum.to_string()
+        .sum::<u32>()
+        .to_string()
 }
 
 #[cfg(test)]

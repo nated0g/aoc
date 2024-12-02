@@ -17,9 +17,7 @@ pub mod solutions {
     pub mod y2024 {
         pub mod day01;
         pub mod day02;
-        // Add more days here
     }
-    // Add more years here as needed
 }
 
 use solutions::*;

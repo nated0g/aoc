@@ -1,5 +1,4 @@
 use aoc::run_solution;
-// main.rs
 use clap::Parser;
 
 #[derive(Parser)]
