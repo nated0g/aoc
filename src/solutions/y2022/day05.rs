@@ -1,11 +1,5 @@
-use crate::Year::Y2022;
-use crate::{Problem, Year};
 use regex::Regex;
 use std::collections::{BTreeMap, VecDeque};
-
-pub struct DayFive {}
-
-impl DayFive {}
 
 #[derive(Debug)]
 struct CrateStacks {
@@ -78,60 +72,51 @@ impl Instruction {
         }
     }
 }
+pub fn part1(input: &str) -> String {
+    let sections: Vec<&str> = input.split("\n\n").collect();
+    let diagram = sections[0];
+    let instructions = sections[1];
+    let mut cs = CrateStacks::new(diagram);
+    instructions
+        .lines()
+        .map(Instruction::new)
+        .for_each(|i| cs.apply_cm9000_instruction(i));
 
-impl Problem for DayFive {
-    fn get_day(&self) -> i32 {
-        5
-    }
-    fn get_year(&self) -> Year {
-        Y2022
-    }
-    fn solve_part_one(&self, input: &str) -> String {
-        let sections: Vec<&str> = input.split("\n\n").collect();
-        let diagram = sections[0];
-        let instructions = sections[1];
-        let mut cs = CrateStacks::new(diagram);
-        instructions
-            .lines()
-            .map(Instruction::new)
-            .for_each(|i| cs.apply_cm9000_instruction(i));
+    cs.get_top_crates_string()
+}
 
-        cs.get_top_crates_string()
-    }
+pub fn part2(input: &str) -> String {
+    let sections: Vec<&str> = input.split("\n\n").collect();
+    let diagram = sections[0];
+    let instructions = sections[1];
+    let mut cs = CrateStacks::new(diagram);
+    instructions
+        .lines()
+        .map(Instruction::new)
+        .for_each(|i| cs.apply_cm9001_instruction(i));
 
-    fn solve_part_two(&self, input: &str) -> String {
-        let sections: Vec<&str> = input.split("\n\n").collect();
-        let diagram = sections[0];
-        let instructions = sections[1];
-        let mut cs = CrateStacks::new(diagram);
-        instructions
-            .lines()
-            .map(Instruction::new)
-            .for_each(|i| cs.apply_cm9001_instruction(i));
-
-        cs.get_top_crates_string()
-    }
+    cs.get_top_crates_string()
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-    const INPUT: &str = r#"   
-    [D]    
-[N] [C]    
+    const INPUT: &str = r#"
+    [D]
+[N] [C]
 [Z] [M] [P]
- 1   2   3 
+ 1   2   3
 
 move 1 from 2 to 1
 move 3 from 1 to 3
 move 2 from 2 to 1
 move 1 from 1 to 2"#;
     #[test]
-    fn part_one() {
-        assert_eq!(DayFive {}.solve_part_one(INPUT), "CMZ");
+    fn test_part1() {
+        assert_eq!(part1(INPUT), "CMZ");
     }
     #[test]
-    fn part_two() {
-        assert_eq!(DayFive {}.solve_part_two(INPUT), "MCD");
+    fn test_part2() {
+        assert_eq!(part2(INPUT), "MCD");
     }
 }

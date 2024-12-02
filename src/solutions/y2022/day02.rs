@@ -1,10 +1,4 @@
-use crate::Year::Y2022;
-use crate::{Problem, Year};
 use std::str::FromStr;
-
-pub struct DayTwo {}
-
-impl DayTwo {}
 
 struct Match {
     us: Choice,
@@ -107,28 +101,20 @@ impl FromStr for Choice {
     }
 }
 
-impl Problem for DayTwo {
-    fn get_day(&self) -> i32 {
-        2
-    }
-    fn get_year(&self) -> Year {
-        Y2022
-    }
-    fn solve_part_one(&self, input: &str) -> String {
-        let total: i32 = input
-            .lines()
-            .map(|line| Match::from_str(line).unwrap().get_score())
-            .sum();
-        format!("{total}")
-    }
+pub fn part1(input: &str) -> String {
+    let total: i32 = input
+        .lines()
+        .map(|line| Match::from_str(line).unwrap().get_score())
+        .sum();
+    format!("{total}")
+}
 
-    fn solve_part_two(&self, input: &str) -> String {
-        let total: i32 = input
-            .lines()
-            .map(|line| Match::from_instructions(line).get_score())
-            .sum();
-        format!("{total}")
-    }
+pub fn part2(input: &str) -> String {
+    let total: i32 = input
+        .lines()
+        .map(|line| Match::from_instructions(line).get_score())
+        .sum();
+    format!("{total}")
 }
 
 #[cfg(test)]
@@ -138,11 +124,11 @@ mod tests {
 B X
 C Z"#;
     #[test]
-    fn part_one() {
-        assert_eq!(DayTwo {}.solve_part_one(INPUT), "15");
+    fn test_part1() {
+        assert_eq!(part1(INPUT), "15");
     }
     #[test]
-    fn part_two() {
-        assert_eq!(DayTwo {}.solve_part_two(INPUT), "12");
+    fn test_part2() {
+        assert_eq!(part2(INPUT), "12");
     }
 }

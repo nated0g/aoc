@@ -1,92 +1,63 @@
-use anyhow::*;
-use std::str::FromStr;
-
-pub mod y2022;
-pub mod y2023;
-pub mod y2024;
-
-#[derive(Clone, Copy, Debug)]
-pub enum Year {
-    Y2022 = 2022,
-    Y2023 = 2023,
-    Y2024 = 2024,
+pub mod solutions {
+    pub mod y2022 {
+        pub mod day01;
+        pub mod day02;
+        pub mod day03;
+        pub mod day04;
+        pub mod day05;
+        pub mod day06;
+        pub mod day07;
+    }
+    pub mod y2023 {
+        pub mod day01;
+        pub mod day02;
+        pub mod day03;
+        pub mod day04;
+    }
+    pub mod y2024 {
+        pub mod day01;
+        // Add more days here
+    }
+    // Add more years here as needed
 }
 
-impl FromStr for Year {
-    type Err = Error;
-    fn from_str(s: &str) -> Result<Self> {
-        let year_int: i32 = s.parse()?;
-        match year_int {
-            x if x == Year::Y2022 as i32 => Ok(Year::Y2022),
-            x if x == Year::Y2023 as i32 => Ok(Year::Y2023),
-            x if x == Year::Y2024 as i32 => Ok(Year::Y2024),
-            _ => Err(Error::msg("Year not implemented.")),
-        }
-    }
-}
+use solutions::*;
 
-pub trait Problem {
-    fn get_day(&self) -> i32;
-    fn get_year(&self) -> Year;
-    fn solve_part_one(&self, input: &str) -> String;
-    fn solve_part_two(&self, input: &str) -> String;
-
-    fn read_input(&self) -> String {
-        std::fs::read_to_string(format!(
-            "./src/y{}/input/day{:0>2}.txt",
-            self.get_year() as i32,
-            self.get_day()
-        ))
-        .unwrap()
-    }
-    fn solve(&self) {
-        let input = self.read_input();
-        let solution_1 = self.solve_part_one(input.as_str());
-        println!(
-            "Solution for {:?}, day {}, part 1: {solution_1}",
-            self.get_year(),
-            self.get_day()
-        );
-        let solution_2 = self.solve_part_two(input.as_str());
-        println!(
-            "Solution for {:?}, day {}, part 2: {solution_2}",
-            self.get_year(),
-            self.get_day()
-        );
-    }
-}
-
-pub fn get_problem(year: Year, day: i32) -> Result<Box<dyn Problem>> {
+pub fn run_solution((year, day, part): (u32, u32, u32), input: &str) -> String {
     match year {
-        Year::Y2022 => {
-            use self::y2022::*;
-            match day {
-                1 => Ok(Box::new(DayOne {})),
-                2 => Ok(Box::new(DayTwo {})),
-                3 => Ok(Box::new(DayThree {})),
-                4 => Ok(Box::new(DayFour {})),
-                5 => Ok(Box::new(DayFive {})),
-                6 => Ok(Box::new(DaySix {})),
-                7 => Ok(Box::new(DaySeven {})),
-                _ => Err(Error::msg("not implemented")),
-            }
-        }
-        Year::Y2023 => {
-            use self::y2023::*;
-            match day {
-                1 => Ok(Box::new(DayOne {})),
-                2 => Ok(Box::new(DayTwo {})),
-                3 => Ok(Box::new(DayThree {})),
-                4 => Ok(Box::new(DayFour {})),
-                _ => Err(Error::msg("not implemented")),
-            }
-        }
-        Year::Y2024 => {
-            use self::y2024::*;
-            match day {
-                1 => Ok(Box::new(DayOne {})),
-                _ => Err(Error::msg("not implemented")),
-            }
-        }
+        2022 => match (day, part) {
+            (1, 1) => y2022::day01::part1(input),
+            (1, 2) => y2022::day01::part2(input),
+            (2, 1) => y2022::day02::part1(input),
+            (2, 2) => y2022::day02::part2(input),
+            (3, 1) => y2022::day03::part1(input),
+            (3, 2) => y2022::day03::part2(input),
+            (4, 1) => y2022::day04::part1(input),
+            (4, 2) => y2022::day04::part2(input),
+            (5, 1) => y2022::day05::part1(input),
+            (5, 2) => y2022::day05::part2(input),
+            (6, 1) => y2022::day06::part1(input),
+            (6, 2) => y2022::day06::part2(input),
+            (7, 1) => y2022::day07::part1(input),
+            (7, 2) => y2022::day07::part2(input),
+            _ => "Not implemented yet".to_string(),
+        },
+        2023 => match (day, part) {
+            (1, 1) => y2023::day01::part1(input),
+            (1, 2) => y2023::day01::part2(input),
+            (2, 1) => y2023::day02::part1(input),
+            (2, 2) => y2023::day02::part2(input),
+            (3, 1) => y2023::day03::part1(input),
+            (3, 2) => y2023::day03::part2(input),
+            (4, 1) => y2023::day04::part1(input),
+            (4, 2) => y2023::day04::part2(input),
+            _ => "Not implemented yet".to_string(),
+        },
+        2024 => match (day, part) {
+            (1, 1) => y2024::day01::part1(input),
+            (1, 2) => y2024::day01::part2(input),
+            _ => "Not implemented yet".to_string(),
+        },
+        _ => "Not implemented yet".to_string(),
     }
 }

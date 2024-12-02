@@ -1,10 +1,22 @@
-use std::env;
+use aoc::run_solution;
+// main.rs
+use clap::Parser;
 
-fn main() {
-    let args: Vec<String> = env::args().collect();
-    let day = &args[2];
-    let day: i32 = day.parse().unwrap();
-    let year = args[1].parse().unwrap();
+#[derive(Parser)]
+struct Args {
+    year: u32,
+    day: u32,
+    part: u32,
+}
 
-    aoc::get_problem(year, day).unwrap().solve();
+fn main() -> anyhow::Result<()> {
+    let args = Args::parse();
+    let key = (args.year, args.day, args.part);
+
+    let input =
+        std::fs::read_to_string(format!("src/input/y{}/day{:02}.txt", args.year, args.day))?;
+
+    println!("{}", run_solution(key, &input));
+
+    Ok(())
 }

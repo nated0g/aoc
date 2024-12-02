@@ -1,10 +1,4 @@
-use crate::Year::Y2023;
-use crate::{Problem, Year};
 use std::collections::{HashMap, HashSet};
-
-pub struct DayThree {}
-
-impl DayThree {}
 
 #[derive(Eq, PartialEq, Hash, Clone, Copy)]
 struct Point(usize, usize);
@@ -105,67 +99,57 @@ impl Schematic {
         s.iter().collect::<String>().parse::<u32>().unwrap()
     }
 }
-
-impl Problem for DayThree {
-    fn get_day(&self) -> i32 {
-        3
-    }
-    fn get_year(&self) -> Year {
-        Y2023
-    }
-    fn solve_part_one(&self, input: &str) -> String {
-        let mut adjacent_points: HashSet<Point> = HashSet::new();
-        let s = Schematic::new(input);
-        let mut curr_part_num: Vec<char> = vec![];
-        let mut sum = 0;
-        s.s.iter().enumerate().for_each(|(i, c)| {
-            if c.is_numeric() {
-                let p = s.pos_from_idx(i);
-                s.add_adjacent_points_to_set(p, &mut adjacent_points);
-                curr_part_num.push(*c);
-            } else if !curr_part_num.is_empty() {
-                if s.any_point_has_symbol(&adjacent_points) {
-                    let num = Schematic::part_str_to_num(curr_part_num.clone());
-                    sum += num;
-                }
-                curr_part_num.clear();
-                adjacent_points.clear();
+pub fn part1(input: &str) -> String {
+    let mut adjacent_points: HashSet<Point> = HashSet::new();
+    let s = Schematic::new(input);
+    let mut curr_part_num: Vec<char> = vec![];
+    let mut sum = 0;
+    s.s.iter().enumerate().for_each(|(i, c)| {
+        if c.is_numeric() {
+            let p = s.pos_from_idx(i);
+            s.add_adjacent_points_to_set(p, &mut adjacent_points);
+            curr_part_num.push(*c);
+        } else if !curr_part_num.is_empty() {
+            if s.any_point_has_symbol(&adjacent_points) {
+                let num = Schematic::part_str_to_num(curr_part_num.clone());
+                sum += num;
             }
-        });
+            curr_part_num.clear();
+            adjacent_points.clear();
+        }
+    });
 
-        format!("{sum}")
-    }
+    format!("{sum}")
+}
 
-    fn solve_part_two(&self, input: &str) -> String {
-        let mut potential_gears: HashMap<usize, u32> = HashMap::new();
-        let mut adjacent_points: HashSet<Point> = HashSet::new();
-        let s = Schematic::new(input);
-        let mut curr_part_num: Vec<char> = vec![];
-        let mut sum = 0;
-        s.s.iter().enumerate().for_each(|(i, c)| {
-            if c.is_numeric() {
-                let p = s.pos_from_idx(i);
-                s.add_adjacent_points_to_set(p, &mut adjacent_points);
-                curr_part_num.push(*c);
-            } else if !curr_part_num.is_empty() {
-                if let Some(gear_pos) = s.try_get_gear_idx(&adjacent_points) {
-                    let paired_gear_ratio = potential_gears.get(&gear_pos);
-                    if let Some(paired_gear_ratio) = paired_gear_ratio {
-                        sum +=
-                            Schematic::part_str_to_num(curr_part_num.clone()) * paired_gear_ratio;
-                        potential_gears.remove(&i);
-                    } else {
-                        potential_gears
-                            .insert(gear_pos, Schematic::part_str_to_num(curr_part_num.clone()));
-                    }
+pub fn part2(input: &str) -> String {
+    let mut potential_gears: HashMap<usize, u32> = HashMap::new();
+    let mut adjacent_points: HashSet<Point> = HashSet::new();
+    let s = Schematic::new(input);
+    let mut curr_part_num: Vec<char> = vec![];
+    let mut sum = 0;
+    s.s.iter().enumerate().for_each(|(i, c)| {
+        if c.is_numeric() {
+            let p = s.pos_from_idx(i);
+            s.add_adjacent_points_to_set(p, &mut adjacent_points);
+            curr_part_num.push(*c);
+        } else if !curr_part_num.is_empty() {
+            if let Some(gear_pos) = s.try_get_gear_idx(&adjacent_points) {
+                let paired_gear_ratio = potential_gears.get(&gear_pos);
+                if let Some(paired_gear_ratio) = paired_gear_ratio {
+                    sum += Schematic::part_str_to_num(curr_part_num.clone()) * paired_gear_ratio;
+                    potential_gears.remove(&i);
+                } else {
+                    potential_gears
+                        .insert(gear_pos, Schematic::part_str_to_num(curr_part_num.clone()));
                 }
-                curr_part_num.clear();
-                adjacent_points.clear();
             }
-        });
+            curr_part_num.clear();
+            adjacent_points.clear();
+        }
+    });
 
-        format!("{sum}")
-    }
+    format!("{sum}")
 }
 
 #[cfg(test)]
@@ -181,12 +165,14 @@ mod tests {
 ......755.
 ...$.*....
 .664.598.."#;
+
     #[test]
-    fn part_one() {
-        assert_eq!(DayThree {}.solve_part_one(INPUT), "4361");
+    fn test_part1() {
+        assert_eq!(part1(INPUT), "4361");
     }
+
     #[test]
-    fn part_two() {
-        assert_eq!(DayThree {}.solve_part_two(INPUT), "467835");
+    fn test_part2() {
+        assert_eq!(part2(INPUT), "467835");
     }
 }

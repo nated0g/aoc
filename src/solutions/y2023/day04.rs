@@ -1,10 +1,4 @@
-use crate::Year::Y2023;
-use crate::{Problem, Year};
 use std::collections::HashMap;
-
-pub struct DayFour {}
-
-impl DayFour {}
 
 #[derive(Debug)]
 struct Card {
@@ -65,37 +59,29 @@ impl Card {
         }
     }
 }
-impl Problem for DayFour {
-    fn get_day(&self) -> i32 {
-        4
-    }
-    fn get_year(&self) -> Year {
-        Y2023
-    }
-    fn solve_part_one(&self, input: &str) -> String {
-        let score: u32 = input.lines().map(Card::new).map(|c| c.get_score()).sum();
-        format!("{score}")
-    }
+pub fn part1(input: &str) -> String {
+    let score: u32 = input.lines().map(Card::new).map(|c| c.get_score()).sum();
+    format!("{score}")
+}
 
-    fn solve_part_two(&self, input: &str) -> String {
-        let mut multipliers: HashMap<usize, usize> = HashMap::new();
-        let score: usize = input
-            .lines()
-            .map(Card::new)
-            .map(|c| {
-                dbg!(&multipliers);
-                c.increment_multipliers(&mut multipliers);
-                let m = multipliers.get(&c.num);
-                if let Some(m) = m {
-                    *m
-                } else {
-                    1usize
-                }
-            })
-            .sum();
+pub fn part2(input: &str) -> String {
+    let mut multipliers: HashMap<usize, usize> = HashMap::new();
+    let score: usize = input
+        .lines()
+        .map(Card::new)
+        .map(|c| {
+            dbg!(&multipliers);
+            c.increment_multipliers(&mut multipliers);
+            let m = multipliers.get(&c.num);
+            if let Some(m) = m {
+                *m
+            } else {
+                1usize
+            }
+        })
+        .sum();
 
-        format!("{score}")
-    }
+    format!("{score}")
 }
 
 #[cfg(test)]
@@ -108,11 +94,11 @@ Card 4: 41 92 73 84 69 | 59 84 76 51 58  5 54 83
 Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36
 Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11"#;
     #[test]
-    fn part_one() {
-        assert_eq!(DayFour {}.solve_part_one(INPUT), "13");
+    fn test_part1() {
+        assert_eq!(part1(INPUT), "13");
     }
     #[test]
-    fn part_two() {
-        assert_eq!(DayFour {}.solve_part_two(INPUT), "30");
+    fn test_part2() {
+        assert_eq!(part2(INPUT), "30");
     }
 }

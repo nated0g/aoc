@@ -1,5 +1,3 @@
-use crate::Year::Y2022;
-use crate::{Problem, Year};
 use std::collections::HashSet;
 
 pub struct DayThree {}
@@ -65,34 +63,26 @@ impl Rucksack {
     }
 }
 
-impl Problem for DayThree {
-    fn get_day(&self) -> i32 {
-        3
-    }
-    fn get_year(&self) -> Year {
-        Y2022
-    }
-    fn solve_part_one(&self, input: &str) -> String {
-        let total: i32 = input
-            .lines()
-            .map(Rucksack::new)
-            .map(|r| r.find_dupe())
-            .map(|i| Rucksack::item_to_priority(&i))
-            .sum();
-        format!("{total}")
-    }
+pub fn part1(input: &str) -> String {
+    let total: i32 = input
+        .lines()
+        .map(Rucksack::new)
+        .map(|r| r.find_dupe())
+        .map(|i| Rucksack::item_to_priority(&i))
+        .sum();
+    format!("{total}")
+}
 
-    fn solve_part_two(&self, input: &str) -> String {
-        let elves: Vec<&str> = input.lines().collect();
+pub fn part2(input: &str) -> String {
+    let elves: Vec<&str> = input.lines().collect();
 
-        let total: i32 = elves
-            .chunks(3)
-            .map(ElfGroup::new)
-            .map(|g| g.find_badge())
-            .map(|b| Rucksack::item_to_priority(&b))
-            .sum();
-        format!("{total}")
-    }
+    let total: i32 = elves
+        .chunks(3)
+        .map(ElfGroup::new)
+        .map(|g| g.find_badge())
+        .map(|b| Rucksack::item_to_priority(&b))
+        .sum();
+    format!("{total}")
 }
 
 #[cfg(test)]
@@ -105,11 +95,11 @@ wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
 ttgJtRGJQctTZtZT
 CrZsJsPPZsGzwwsLwLmpwMDw"#;
     #[test]
-    fn part_one() {
-        assert_eq!(DayThree {}.solve_part_one(INPUT), "157");
+    fn test_part1() {
+        assert_eq!(part1(INPUT), "157");
     }
     #[test]
-    fn part_two() {
-        assert_eq!(DayThree {}.solve_part_two(INPUT), "70");
+    fn test_part2() {
+        assert_eq!(part2(INPUT), "70");
     }
 }
