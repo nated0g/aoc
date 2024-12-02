@@ -11,4 +11,5 @@ fi
 YEAR=$1
 DAY=$2
 
+mkdir -p src/input/y$YEAR
 aoc download -y $YEAR -d $DAY -i src/input/y$YEAR/day$(printf "%02d" $DAY).txt -p src/input/y$YEAR/day$(printf "%02d" $DAY).md
