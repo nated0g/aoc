@@ -28,16 +28,22 @@ pub fn run_solution((year, day, part): (u32, u32, u32), input: &str) -> String {
         2022 => match (day, part) {
             (1, 1) => y2022::day01::part1(input),
             (1, 2) => y2022::day01::part2(input),
+
             (2, 1) => y2022::day02::part1(input),
             (2, 2) => y2022::day02::part2(input),
+
             (3, 1) => y2022::day03::part1(input),
             (3, 2) => y2022::day03::part2(input),
+
             (4, 1) => y2022::day04::part1(input),
             (4, 2) => y2022::day04::part2(input),
+
             (5, 1) => y2022::day05::part1(input),
             (5, 2) => y2022::day05::part2(input),
+
             (6, 1) => y2022::day06::part1(input),
             (6, 2) => y2022::day06::part2(input),
+
             (7, 1) => y2022::day07::part1(input),
             (7, 2) => y2022::day07::part2(input),
             _ => "Not implemented yet".to_string(),
@@ -45,10 +51,13 @@ pub fn run_solution((year, day, part): (u32, u32, u32), input: &str) -> String {
         2023 => match (day, part) {
             (1, 1) => y2023::day01::part1(input),
             (1, 2) => y2023::day01::part2(input),
+
             (2, 1) => y2023::day02::part1(input),
             (2, 2) => y2023::day02::part2(input),
+
             (3, 1) => y2023::day03::part1(input),
             (3, 2) => y2023::day03::part2(input),
+
             (4, 1) => y2023::day04::part1(input),
             (4, 2) => y2023::day04::part2(input),
             _ => "Not implemented yet".to_string(),
