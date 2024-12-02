@@ -1,5 +1,3 @@
-use std::u32;
-
 fn safe1(nums: &[i32]) -> u32 {
     let ascending = nums[0] < nums[1];
 
@@ -51,7 +49,7 @@ pub fn part1(input: &str) -> String {
             safe1(&nums)
         })
         .sum();
-    format!("{}", sum)
+    sum.to_string()
 }
 
 pub fn part2(input: &str) -> String {
@@ -66,7 +64,7 @@ pub fn part2(input: &str) -> String {
             safe2(&nums)
         })
         .sum();
-    format!("{}", sum)
+    sum.to_string()
 }
 
 #[cfg(test)]
