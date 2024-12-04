@@ -51,7 +51,10 @@ Runs solution and submits answer:
 
 ### 2024
 - [x] Day 1: [Historian Hysteria](src/solutions/y2024/day01.rs)
-- [x] Day 1: [Red-Nosed Reports](src/solutions/y2024/day02.rs)
+- [x] Day 2: [Red-Nosed Reports](src/solutions/y2024/day02.rs)
+- [x] Day 3: [Mull It Over](src/solutions/y2024/day03.rs)
+- [x] Day 4: [Ceres Search](src/solutions/y2024/day04.rs)
+
 
 ## 🚀 Running Solutions
 

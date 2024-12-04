@@ -73,7 +73,7 @@ pub fn part1(input: &str) -> String {
 }
 
 pub fn part2(_input: &str) -> String {
-    todo!()
+    "".to_string()
 }
 
 #[cfg(test)]
