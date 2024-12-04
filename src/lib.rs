@@ -22,6 +22,9 @@ pub mod solutions {
     }
 }
 
+/// elves are helpful
+pub mod elves;
+
 use solutions::*;
 
 pub fn run_solution((year, day, part): (u32, u32, u32), input: &str) -> String {
@@ -66,18 +69,5 @@ pub fn run_solution((year, day, part): (u32, u32, u32), input: &str) -> String {
             _ => "Not implemented yet".to_string(),
         },
         _ => "Not implemented yet".to_string(),
-    }
-}
-
-pub mod helpers {
-    pub fn to_2d_array(input: &str) -> Vec<Vec<char>> {
-        input
-            .lines()
-            .map(|line| line.chars().collect::<Vec<char>>())
-            .collect::<Vec<Vec<char>>>()
-    }
-
-    pub fn in_bounds(x: i32, y: i32, grid: &Vec<Vec<char>>) -> bool {
-        y >= 0 && y < grid.len() as i32 && x >= 0 && x < grid[y as usize].len() as i32
     }
 }

@@ -1,4 +1,4 @@
-use crate::helpers::*;
+use crate::elves::*;
 
 const XMAS: [char; 4] = ['X', 'M', 'A', 'S'];
 const DIRS: [(i32, i32); 8] = [
@@ -12,7 +12,7 @@ const DIRS: [(i32, i32); 8] = [
     (-1, 1),
 ];
 
-fn search1(x: i32, y: i32, dir: (i32, i32), grid: &Vec<Vec<char>>) -> bool {
+fn search1(x: i32, y: i32, dir: (i32, i32), grid: &Grid) -> bool {
     let mut pos = 0;
     let mut curr_x = x;
     let mut curr_y = y;
@@ -30,7 +30,7 @@ fn search1(x: i32, y: i32, dir: (i32, i32), grid: &Vec<Vec<char>>) -> bool {
 }
 
 pub fn part1(input: &str) -> String {
-    let grid = to_2d_array(input);
+    let grid = input.to_grid();
 
     let mut xmas_count = 0;
 
@@ -49,14 +49,14 @@ pub fn part1(input: &str) -> String {
     xmas_count.to_string()
 }
 
-fn search2(x: usize, y: usize, grid: &Vec<Vec<char>>) -> bool {
+fn search2(x: usize, y: usize, grid: &Grid) -> bool {
     let word1 = (grid[y - 1][x - 1], grid[y + 1][x + 1]);
     let word2 = (grid[y - 1][x + 1], grid[y + 1][x - 1]);
     (word1 == ('M', 'S') || word1 == ('S', 'M')) && (word2 == ('M', 'S') || word2 == ('S', 'M'))
 }
 
 pub fn part2(input: &str) -> String {
-    let grid = to_2d_array(input);
+    let grid = input.to_grid();
 
     let mut xmas_count = 0;
 
