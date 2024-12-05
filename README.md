@@ -35,26 +35,26 @@ Runs solution and submits answer:
 ## 📈 Progress
 
 ### 2022
-- [x] Day 1: [Calorie Counting](src/solutions/y2022/day01.rs)
-- [x] Day 2: [Rock Paper Scissors](src/solutions/y2022/day02.rs)
-- [x] Day 3: [Rucksack Reorganization](src/solutions/y2022/day03.rs)
-- [x] Day 4: [Camp Cleanup](src/solutions/y2022/day04.rs)
-- [x] Day 5: [Supply Stacks](src/solutions/y2022/day05.rs)
-- [x] Day 6: [Tuning Trouble](src/solutions/y2022/day06.rs)
-- [ ] Day 7: [No Space Left On Device](src/solutions/y2022/day07.rs) (part 01 only)
+- Day 1 ⭐⭐: [Calorie Counting](src/solutions/y2022/day01.rs)
+- Day 2 ⭐⭐: [Rock Paper Scissors](src/solutions/y2022/day02.rs)
+- Day 3 ⭐⭐: [Rucksack Reorganization](src/solutions/y2022/day03.rs)
+- Day 4 ⭐⭐: [Camp Cleanup](src/solutions/y2022/day04.rs)
+- Day 5 ⭐⭐: [Supply Stacks](src/solutions/y2022/day05.rs)
+- Day 6 ⭐⭐: [Tuning Trouble](src/solutions/y2022/day06.rs)
+- Day 7 ⭐  : [No Space Left On Device](src/solutions/y2022/day07.rs)
 
 ### 2023
-- [x] Day 1: [Trebuchet?!](src/solutions/y2023/day01.rs)
-- [x] Day 2: [Cube Conundrum](src/solutions/y2023/day02.rs)
-- [x] Day 3: [Gear Ratios](src/solutions/y2023/day03.rs)
-- [x] Day 4: [Scratchcards](src/solutions/y2023/day04.rs)
+- Day 1 ⭐⭐: [Trebuchet?!](src/solutions/y2023/day01.rs)
+- Day 2 ⭐⭐: [Cube Conundrum](src/solutions/y2023/day02.rs)
+- Day 3 ⭐⭐: [Gear Ratios](src/solutions/y2023/day03.rs)
+- Day 4 ⭐⭐: [Scratchcards](src/solutions/y2023/day04.rs)
 
 ### 2024
-- [x] Day 1: [Historian Hysteria](src/solutions/y2024/day01.rs)
-- [x] Day 2: [Red-Nosed Reports](src/solutions/y2024/day02.rs)
-- [x] Day 3: [Mull It Over](src/solutions/y2024/day03.rs)
-- [x] Day 4: [Ceres Search](src/solutions/y2024/day04.rs)
-
+- Day 1 ⭐⭐: [Historian Hysteria](src/solutions/y2024/day01.rs)
+- Day 2 ⭐⭐: [Red-Nosed Reports](src/solutions/y2024/day02.rs)
+- Day 3 ⭐⭐: [Mull It Over](src/solutions/y2024/day03.rs)
+- Day 4 ⭐⭐: [Ceres Search](src/solutions/y2024/day04.rs)
+- Day 5 ⭐⭐: [Print Queue](src/solutions/y2024/day05.rs)
 
 ## 🚀 Running Solutions
 
